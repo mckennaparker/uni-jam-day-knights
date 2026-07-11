@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 12f;
 
+    [Header("Jump Assistance")]
+    [SerializeField] private float jumpBufferTime = 0.12f;
+    private float jumpBufferCounter;
+
     [Header("Ground Check Settings")]
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.1f);
@@ -24,9 +28,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizInput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump"))
+            jumpBufferCounter = jumpBufferTime;
+        
+        else
+            jumpBufferCounter -= Time.deltaTime;
+        
+
+        if (jumpBufferCounter > 0f && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpBufferCounter = 0f;
         }
 
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
