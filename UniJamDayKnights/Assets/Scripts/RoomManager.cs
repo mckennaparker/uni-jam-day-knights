@@ -6,7 +6,12 @@ public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance { get; private set; }
 
+    [Header("Room Settings")]
+    [SerializeField] private bool isDarkRoom;
+
+    [Header("Restart Settings")]
     [SerializeField] private float restartDelay = 0.25f;
+    public bool IsDarkRoom => isDarkRoom;
 
     private bool isRestarting;
 
@@ -23,11 +28,10 @@ public class RoomManager : MonoBehaviour
 
     private void Update() // restart current room by R (optional)
     {
-        // old input manager
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    RestartRoom();
-        //}
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartRoom();
+        }
     }
 
     public void RestartRoom()

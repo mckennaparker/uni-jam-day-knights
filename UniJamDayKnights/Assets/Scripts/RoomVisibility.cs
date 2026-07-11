@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class RoomVisibility : MonoBehaviour
 {
-    [Header("Room Type")]
-    [SerializeField] private bool isDarkRoom;
-
     [Header("Object Groups")]
     [SerializeField] private GameObject objectsToHide;
     [SerializeField] private GameObject glyphs;
@@ -17,6 +14,14 @@ public class RoomVisibility : MonoBehaviour
     [ContextMenu("Apply Visibility")]
     public void ApplyVisibility()
     {
+        if (RoomManager.Instance == null)
+        {
+            Debug.LogError("RoomManager not found.", this);
+            return;
+        }
+
+        bool isDarkRoom = RoomManager.Instance.IsDarkRoom;
+
         SetRenderersVisible(objectsToHide, !isDarkRoom);
 
         if (glyphs != null)
