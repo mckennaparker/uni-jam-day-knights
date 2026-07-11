@@ -1,1 +1,9 @@
-# uni-jam-day-knights
+# UniJam Submission by Day Knights
+## Credits
+<b>Producer:</b> Max Buxton
+<br>
+<b>Programming:</b> McKenna Parker, Bomin Song, Tyler
+<br>
+<b>Sound Design:</b> Yoshi
+<br>
+<b>Art:</b> Perfect_Lavender
