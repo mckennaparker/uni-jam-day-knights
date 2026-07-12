@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.1f);
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Animations")]
+    [SerializeField] private Animator animator;
+
     private Rigidbody2D rb;
     private float horizInput;
     private bool facingRight = true;
@@ -30,22 +33,23 @@ public class PlayerMovement : MonoBehaviour
         horizInput = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump"))
             jumpBufferCounter = jumpBufferTime;
-        
         else
             jumpBufferCounter -= Time.deltaTime;
         
 
-        if (jumpBufferCounter > 0f && IsGrounded())
+        if (jumpBufferCounter > 0f && IsGrounded()) // while pressing: jumping up
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jumpBufferCounter = 0f;
+            //_animator.SetBool("isJumping", true);
         }
 
-        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
+        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0) // falling down
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
         FlipDirection();
+        UpdateAnimation();
     }
 
     void FixedUpdate()
@@ -67,5 +71,12 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    private void UpdateAnimation()
+    {
+        animator.SetFloat("XVelocity", Mathf.Abs(horizInput));
+        animator.SetFloat("YVelocity", rb.linearVelocity.y);
+        animator.SetBool("IsGrounded", IsGrounded());
     }
 }
