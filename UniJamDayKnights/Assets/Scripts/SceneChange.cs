@@ -10,7 +10,7 @@ public class SceneChange : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -23,20 +23,49 @@ public class SceneChange : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentSceneIndex + 1);
+            LoadNextScene();
         }
     }
 
     private void RespondToDebugKeys()
     {
-        if (Keyboard.current.lKey.wasPressedThisFrame)
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            SceneManager.LoadScene(currentSceneIndex + 1);
+            Debug.Log("L pressed");
+            LoadNextScene();
         }
-        else if (Keyboard.current.kKey.wasPressedThisFrame)
+        else if (Input.GetKeyDown(KeyCode.K))
         {
-            SceneManager.LoadScene(currentSceneIndex - 1);
+            Debug.Log("K pressed");
+            LoadPreviousScene();
+        }
+    }
+
+    private void LoadNextScene()
+    {
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.LogWarning("There is no next scene in Build Settings.");
+        }
+    }
+
+    private void LoadPreviousScene()
+    {
+        int previousSceneIndex = currentSceneIndex - 1;
+
+        if (previousSceneIndex >= 0)
+        {
+            SceneManager.LoadScene(previousSceneIndex);
+        }
+        else
+        {
+            Debug.LogWarning("There is no previous scene.");
         }
     }
 }
