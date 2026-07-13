@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class RoomManager : MonoBehaviour
     [Header("Restart Settings")]
     [SerializeField] private float restartDelay = 0.25f;
     public bool IsDarkRoom => isDarkRoom;
+    public event Action<bool> OnDarkRoomStateChanged;
 
     private bool isRestarting;
 
@@ -26,14 +28,34 @@ public class RoomManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Update() // restart current room by R (optional)
+    private void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R)) // restart current room by R (optional)
         {
             RestartRoom();
         }
+
+        if (Input.GetKeyDown(KeyCode.T)) // press T to change bright/dark state (debug)
+        {
+            ToggleLightState();
+        }
+    }
+    public void ToggleLightState()
+    {
+        SetDarkRoom(!isDarkRoom);
+        Debug.Log("Toggle stage");
     }
 
+    public void SetDarkRoom(bool dark)
+    {
+        if (isDarkRoom == dark)
+        {
+            return;
+        }
+
+        isDarkRoom = dark;
+        OnDarkRoomStateChanged?.Invoke(isDarkRoom);
+    }
     public void RestartRoom()
     {
         if (isRestarting)

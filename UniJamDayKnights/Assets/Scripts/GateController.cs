@@ -5,14 +5,23 @@ public class GateController : MonoBehaviour
     [Header("Condition")]
     [SerializeField] private GateCondition openCondition;
 
-    [Header("Gate Parts")]
-    [SerializeField] private GameObject gateVisual;
-    [SerializeField] private Collider2D gateCollider;
+    [Header("Movement")]
+    [SerializeField] private Vector3 openOffset = new Vector3(0f, 3f, 0f);
+    [SerializeField] private float moveSpeed = 3f;
 
     [Header("Behavior")]
     [SerializeField] private bool stayOpenOnceActivated;
 
     public bool IsOpen { get; private set; }
+
+    private Vector3 closedPosition;
+    private Vector3 openPosition;
+
+    private void Awake()
+    {
+        closedPosition = transform.position;
+        openPosition = closedPosition + openOffset;
+    }
 
     private void Update()
     {
@@ -25,29 +34,19 @@ public class GateController : MonoBehaviour
 
         if (stayOpenOnceActivated && IsOpen)
         {
-            return;
+            shouldOpen = true;
         }
 
-        SetOpen(shouldOpen);
-    }
+        IsOpen = shouldOpen;
 
-    private void SetOpen(bool open)
-    {
-        if (IsOpen == open)
-        {
-            return;
-        }
+        Vector3 targetPosition = IsOpen
+            ? openPosition
+            : closedPosition;
 
-        IsOpen = open;
-
-        if (gateVisual != null)
-        {
-            gateVisual.SetActive(!open);
-        }
-
-        if (gateCollider != null)
-        {
-            gateCollider.enabled = !open;
-        }
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            moveSpeed * Time.deltaTime
+        );
     }
 }

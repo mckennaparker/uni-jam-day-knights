@@ -2,26 +2,35 @@ using UnityEngine;
 
 public class RoomVisibility : MonoBehaviour
 {
-    [Header("Object Groups")]
     [SerializeField] private GameObject objectsToHide;
     [SerializeField] private GameObject glyphs;
 
     private void Start()
     {
-        ApplyVisibility();
-    }
-
-    [ContextMenu("Apply Visibility")]
-    public void ApplyVisibility()
-    {
         if (RoomManager.Instance == null)
         {
-            Debug.LogError("RoomManager not found.", this);
+            Debug.LogError(
+                "RoomManager not found.",
+                this
+            );
             return;
         }
 
-        bool isDarkRoom = RoomManager.Instance.IsDarkRoom;
+        RoomManager.Instance.OnDarkRoomStateChanged += ApplyVisibility;
 
+        ApplyVisibility(RoomManager.Instance.IsDarkRoom);
+    }
+
+    private void OnDisable()
+    {
+        if (RoomManager.Instance != null)
+        {
+            RoomManager.Instance.OnDarkRoomStateChanged -= ApplyVisibility;
+        }
+    }
+
+    private void ApplyVisibility(bool isDarkRoom)
+    {
         SetRenderersVisible(objectsToHide, !isDarkRoom);
 
         if (glyphs != null)
