@@ -3,30 +3,40 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     Vector2 startPos, movePos;
+    private Rigidbody2D rb;
 
     public float moveSpeed;
     public float moveDistance;
 
     public bool isHorizontal;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startPos = transform.position;
+        startPos = rb.position;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        float offset = Mathf.Sin(Time.fixedTime * moveSpeed) * moveDistance;
+        Vector2 targetPosition = startPos;
+
         if (isHorizontal)
         {
-            movePos.x = startPos.x + Mathf.Sin(Time.time * moveSpeed) * moveDistance;
-            transform.position = new Vector2(movePos.x, transform.position.y);
+            targetPosition.x += offset;
         }
         else
         {
-            movePos.y = startPos.y + Mathf.Sin(Time.time * moveSpeed) * moveDistance;
-            transform.position = new Vector2(transform.position.x, movePos.y);
+            targetPosition.y += offset;
         }
+
+        rb.MovePosition(targetPosition);
     }
 }
