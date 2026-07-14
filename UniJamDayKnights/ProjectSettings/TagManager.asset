@@ -44,14 +44,14 @@ TagManager:
   - name: Background
     uniqueID: 2226858675
     locked: 0
+  - name: Objects
+    uniqueID: 2389886767
+    locked: 0
   - name: Tiles
     uniqueID: 786918213
     locked: 0
   - name: Player
     uniqueID: 502572233
-    locked: 0
-  - name: Objects
-    uniqueID: 2389886767
     locked: 0
   - name: Glyphs
     uniqueID: 1695521719

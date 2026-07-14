@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Lever : MonoBehaviour
@@ -12,6 +13,8 @@ public class Lever : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.E;
 
     public bool IsActivated { get; private set; }
+    public event Action<Lever> OnActivated;
+    public event Action<Lever, bool> OnStateChanged;
 
     private bool playerInRange;
 
@@ -32,12 +35,24 @@ public class Lever : MonoBehaviour
 
     public void Toggle()
     {
-        IsActivated = !IsActivated;
+        SetActivated(!IsActivated);
     }
 
     public void SetActivated(bool activated)
     {
+        if (IsActivated == activated)
+        {
+            return;
+        }
+
         IsActivated = activated;
+
+        OnStateChanged?.Invoke(this, IsActivated);
+
+        if (IsActivated)
+        {
+            OnActivated?.Invoke(this);
+        }
     }
 
     private void RotateLever()
