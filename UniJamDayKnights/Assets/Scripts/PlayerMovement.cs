@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpBufferCounter;
 
     [Header("Ground Check Settings")]
+    public bool grounded;
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.1f);
     [SerializeField] private LayerMask groundLayer;
@@ -55,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(horizInput * moveSpeed, rb.linearVelocity.y);
+        GroundDetector();
     }
 
     private bool IsGrounded()
@@ -78,5 +80,39 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("XVelocity", Mathf.Abs(horizInput));
         animator.SetFloat("YVelocity", rb.linearVelocity.y);
         animator.SetBool("IsGrounded", IsGrounded());
+    }
+
+    // Detect whether the player is grounded and then parent player to moving platform if on one
+    private void GroundDetector()
+    {
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(groundCheckPoint.position, 
+                                                         groundCheckSize, 
+                                                         0f, 
+                                                         groundLayer);
+        if (colliders.Length > 0)
+        {
+            grounded = true;
+
+            foreach (var collider in colliders)
+            {
+                if (collider.tag == "MovingPlatform")
+                {
+                    transform.parent = collider.transform;
+                } else
+                {
+                    transform.parent = null;
+                }
+            }
+        } else
+        {
+            grounded = false;
+        }
+    }
+
+    // Visualize Ground Detector
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);
     }
 }
