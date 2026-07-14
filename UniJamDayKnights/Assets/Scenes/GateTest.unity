@@ -1459,6 +1459,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1786888738}
     m_Modifications:
+    - target: {fileID: 368025318816375857, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 368025318816375857, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681683626175913707, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 1681683626175913707, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349512468541548098, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 2349512468541548098, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6366378906311090559, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.58
@@ -1502,6 +1526,14 @@ PrefabInstance:
     - target: {fileID: 7301649858002068039, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
       propertyPath: m_Name
       value: RuneCycleBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432697198403812457, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 8432697198403812457, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1777,6 +1809,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1786888738}
     m_Modifications:
+    - target: {fileID: 368025318816375857, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 368025318816375857, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681683626175913707, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 1681683626175913707, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349512468541548098, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 2349512468541548098, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6366378906311090559, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.78
@@ -1820,6 +1876,14 @@ PrefabInstance:
     - target: {fileID: 7301649858002068039, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
       propertyPath: m_Name
       value: RuneCycleBlock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432697198403812457, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 8432697198403812457, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5614,6 +5678,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1786888738}
     m_Modifications:
+    - target: {fileID: 368025318816375857, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 368025318816375857, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681683626175913707, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 1681683626175913707, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349512468541548098, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 2349512468541548098, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6366378906311090559, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.38
@@ -5657,6 +5745,14 @@ PrefabInstance:
     - target: {fileID: 7301649858002068039, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
       propertyPath: m_Name
       value: RuneCycleBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432697198403812457, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 196ecd3605603ce4abcba8c33bb6cd07, type: 3}
+    - target: {fileID: 8432697198403812457, guid: db7c86e02236fdc41a3d4a409a0fb8f4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
