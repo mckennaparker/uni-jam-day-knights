@@ -22,6 +22,9 @@ public class Lever : MonoBehaviour
     [Header("Starting State")]
     [SerializeField] private bool startActivated;
 
+    [Header("Interaction Prompt")]
+    [SerializeField] private InteractionPrompt interactionPrompt;
+
     public bool IsActivated { get; private set; }
 
     public event Action<Lever> OnActivated;
@@ -107,6 +110,11 @@ public class Lever : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+
+            if (interactionPrompt != null)
+            {
+                interactionPrompt.SetPlayerInRange(true);
+            }
         }
     }
 
@@ -115,6 +123,11 @@ public class Lever : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+
+            if (interactionPrompt != null)
+            {
+                interactionPrompt.SetPlayerInRange(false);
+            }
         }
     }
 }

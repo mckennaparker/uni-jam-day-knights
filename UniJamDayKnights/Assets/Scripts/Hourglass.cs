@@ -13,6 +13,9 @@ public class Hourglass : GateCondition
     [SerializeField] private float flipAngle = 180f;
     [SerializeField] private float rotationSpeed = 360f;
 
+    [Header("Interaction Prompt")]
+    [SerializeField] private InteractionPrompt interactionPrompt;
+
     private float activeTimer;
     private bool playerInRange;
     private float targetZRotation;
@@ -83,6 +86,11 @@ public class Hourglass : GateCondition
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+
+            if (interactionPrompt != null)
+            {
+                interactionPrompt.SetPlayerInRange(true);
+            }
         }
     }
 
@@ -91,6 +99,11 @@ public class Hourglass : GateCondition
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+
+            if (interactionPrompt != null)
+            {
+                interactionPrompt.SetPlayerInRange(false);
+            }
         }
     }
 }

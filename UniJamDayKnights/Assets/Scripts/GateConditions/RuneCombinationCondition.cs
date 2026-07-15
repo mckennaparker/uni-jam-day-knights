@@ -12,30 +12,46 @@ public class RuneCombinationCondition : GateCondition
     [Header("Required Rune Combination")]
     [SerializeField] private RuneRequirement[] requirements;
 
+    [Header("Progress Indicator")]
+    [SerializeField] private PuzzleProgressIndicator progressIndicator;
+
     public override bool IsSatisfied
     {
         get
         {
             if (requirements == null || requirements.Length == 0)
             {
+                UpdateIndicator(0);
                 return false;
             }
+
+            int correctCount = 0;
 
             foreach (RuneRequirement requirement in requirements)
             {
                 if (requirement.runeBlock == null)
                 {
-                    return false;
+                    continue;
                 }
 
-                if (requirement.runeBlock.CurrentValue
-                    != requirement.requiredValue)
+                if (requirement.runeBlock.CurrentValue ==
+                    requirement.requiredValue)
                 {
-                    return false;
+                    correctCount++;
                 }
             }
 
-            return true;
+            UpdateIndicator(correctCount);
+
+            return correctCount == requirements.Length;
+        }
+    }
+
+    private void UpdateIndicator(int correctCount)
+    {
+        if (progressIndicator != null)
+        {
+            progressIndicator.SetProgress(correctCount);
         }
     }
 }
