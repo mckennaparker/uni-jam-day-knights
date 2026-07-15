@@ -7,6 +7,11 @@ public class PressureButton : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform buttonTop;
 
+    [Header("Sprites")]
+    [SerializeField] private SpriteRenderer buttonRenderer;
+    [SerializeField] private Sprite releasedSprite;
+    [SerializeField] private Sprite pressedSprite;
+
     [Header("Movement")]
     [SerializeField]
     private Vector3 pressedOffset =
@@ -39,6 +44,12 @@ public class PressureButton : MonoBehaviour
 
         releasedLocalPosition = buttonTop.localPosition;
         pressedLocalPosition = releasedLocalPosition + pressedOffset;
+
+        if (buttonRenderer == null)
+        {
+            buttonRenderer = buttonTop.GetComponent<SpriteRenderer>();
+        }
+        UpdateButtonSprite();
     }
 
     private void Update()
@@ -91,9 +102,23 @@ public class PressureButton : MonoBehaviour
         }
 
         IsPressed = newPressedState;
+        UpdateButtonSprite();
         OnPressedChanged?.Invoke(IsPressed);
 
         if(IsPressed)
             OnPressed?.Invoke(this);
     }
+
+    private void UpdateButtonSprite()
+    {
+        if (buttonRenderer == null)
+        {
+            return;
+        }
+
+        buttonRenderer.sprite = IsPressed
+            ? pressedSprite
+            : releasedSprite;
+    }
+
 }

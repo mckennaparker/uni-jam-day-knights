@@ -5,10 +5,11 @@ public class MovingPlatform : MonoBehaviour
     Vector2 startPos, movePos;
     private Rigidbody2D rb;
 
-    public float moveSpeed;
-    public float moveDistance;
+    public float moveSpeed = 1f;
+    public float moveDistance = 2f;
 
     public bool isHorizontal;
+    [SerializeField] private Transform glyphs;
 
     private void Awake()
     {
@@ -20,6 +21,13 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         startPos = rb.position;
+
+        if (glyphs != null)
+        {
+            glyphs.localRotation = isHorizontal
+                ? Quaternion.Euler(0f, 0f, 90f)
+                : Quaternion.identity;
+        }
     }
 
     // Update is called once per frame

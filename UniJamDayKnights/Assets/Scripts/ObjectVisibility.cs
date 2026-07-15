@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ObjectVisibility : MonoBehaviour
 {
@@ -46,18 +47,36 @@ public class ObjectVisibility : MonoBehaviour
             return;
         }
 
-        SpriteRenderer[] renderers =
+        int glyphLayer = LayerMask.NameToLayer("Glyphs");
+
+        // normal sprite objects
+        SpriteRenderer[] spriteRenderers =
             group.GetComponentsInChildren<SpriteRenderer>(true);
 
-        foreach (SpriteRenderer spriteRenderer in renderers)
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
         {
-            if (spriteRenderer.gameObject.layer ==
-                LayerMask.NameToLayer("Glyphs"))
+            if (spriteRenderer.gameObject.layer == glyphLayer)
             {
+                spriteRenderer.enabled = true;
                 continue;
             }
 
             spriteRenderer.enabled = visible;
+        }
+
+        // tilemap objects
+        TilemapRenderer[] tilemapRenderers =
+            group.GetComponentsInChildren<TilemapRenderer>(true);
+
+        foreach (TilemapRenderer tilemapRenderer in tilemapRenderers)
+        {
+            if (tilemapRenderer.gameObject.layer == glyphLayer)
+            {
+                tilemapRenderer.enabled = true;
+                continue;
+            }
+
+            tilemapRenderer.enabled = visible;
         }
     }
 }

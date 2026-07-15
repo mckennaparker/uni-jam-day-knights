@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040399058828227872, guid: 245e96e849ee78345a2355592e607760, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2040399058828227872, guid: 245e96e849ee78345a2355592e607760, type: 3}
       propertyPath: m_LocalPosition.z
@@ -227,8 +227,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Glyph_Box
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5677844529048511371, guid: 245e96e849ee78345a2355592e607760, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

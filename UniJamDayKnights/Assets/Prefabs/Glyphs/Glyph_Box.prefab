@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2040399058828227872}
   - component: {fileID: 8144131672435630400}
-  - component: {fileID: 5677844529048511371}
   - component: {fileID: -2090936633395976197}
   m_Layer: 10
   m_Name: Glyph_Box
@@ -93,20 +92,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5677844529048511371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7905543605825238199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad9cee28d2befe44b9bae47d90b3e25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FollowTarget
-  target: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &-2090936633395976197
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2104617284312438465}
   - component: {fileID: 6065518381211347400}
   - component: {fileID: 9216244865926208963}
+  - component: {fileID: 961912948428587339}
   m_Layer: 0
   m_Name: Gate_RuneCombination
   m_TagString: Untagged
@@ -156,7 +157,7 @@ MonoBehaviour:
   openOffset: {x: 0, y: 3, z: 0}
   moveSpeed: 3
   stayOpenOnceActivated: 0
-  animator: {fileID: 0}
+  animator: {fileID: 961912948428587339}
 --- !u!114 &9216244865926208963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +177,25 @@ MonoBehaviour:
     requiredValue: 2
   - runeBlock: {fileID: 0}
     requiredValue: 3
+--- !u!95 &961912948428587339
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166175695305006289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 372bb8d475442b94f8534285254432cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
