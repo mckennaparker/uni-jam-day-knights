@@ -4,23 +4,39 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     [Header("Lever Visual")]
-    [SerializeField] private Transform leverPivot;
-    [SerializeField] private float offAngle = -80f;
-    [SerializeField] private float onAngle = 80f;
-    [SerializeField] private float rotationSpeed = 360f;
+    [SerializeField] private Transform lightIndicator;
+
+    [SerializeField]
+    private Vector3 offLocalPosition =
+        new Vector3(0f, -0.2f, 0f);
+
+    [SerializeField]
+    private Vector3 onLocalPosition =
+        new Vector3(0f, 0.2f, 0f);
+
+    [SerializeField] private float visualMoveSpeed = 2f;
 
     [Header("Interaction")]
     [SerializeField] private KeyCode interactKey = KeyCode.E;
 
+    [Header("Starting State")]
+    [SerializeField] private bool startActivated;
+
     public bool IsActivated { get; private set; }
+
     public event Action<Lever> OnActivated;
     public event Action<Lever, bool> OnStateChanged;
 
     private bool playerInRange;
 
+    private void Awake()
+    {
+        IsActivated = startActivated;
+    }
+
     private void Start()
     {
-        ApplyRotationImmediately();
+        ApplyVisualImmediately();
     }
 
     private void Update()
@@ -30,7 +46,7 @@ public class Lever : MonoBehaviour
             Toggle();
         }
 
-        RotateLever();
+        MoveIndicator();
     }
 
     public void Toggle()
@@ -55,43 +71,41 @@ public class Lever : MonoBehaviour
         }
     }
 
-    private void RotateLever()
+    private void MoveIndicator()
     {
-        if (leverPivot == null)
+        if (lightIndicator == null)
         {
             return;
         }
 
-        float targetAngle = IsActivated ? onAngle : offAngle;
+        Vector3 targetPosition = IsActivated
+            ? onLocalPosition
+            : offLocalPosition;
 
-        Quaternion targetRotation =
-            Quaternion.Euler(0f, 0f, targetAngle);
-
-        leverPivot.localRotation = Quaternion.RotateTowards(
-            leverPivot.localRotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime
+        lightIndicator.localPosition = Vector3.MoveTowards(
+            lightIndicator.localPosition,
+            targetPosition,
+            visualMoveSpeed * Time.deltaTime
         );
     }
 
-    private void ApplyRotationImmediately()
+    private void ApplyVisualImmediately()
     {
-        if (leverPivot == null)
+        if (lightIndicator == null)
         {
-            Debug.LogError("Lever Pivot not assigned.", this);
+            Debug.LogError("Light Indicator is not assigned.", this);
             return;
         }
 
-        float startingAngle = IsActivated ? onAngle : offAngle;
-        leverPivot.localRotation =
-            Quaternion.Euler(0f, 0f, startingAngle);
+        lightIndicator.localPosition = IsActivated
+            ? onLocalPosition
+            : offLocalPosition;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player entered");
             playerInRange = true;
         }
     }

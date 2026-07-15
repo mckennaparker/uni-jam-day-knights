@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RoomVisibility : MonoBehaviour
+public class ObjectVisibility : MonoBehaviour
 {
     [SerializeField] private GameObject objectsToHide;
     [SerializeField] private GameObject glyphs;
@@ -51,6 +51,12 @@ public class RoomVisibility : MonoBehaviour
 
         foreach (SpriteRenderer spriteRenderer in renderers)
         {
+            if (spriteRenderer.gameObject.layer ==
+                LayerMask.NameToLayer("Glyphs"))
+            {
+                continue;
+            }
+
             spriteRenderer.enabled = visible;
         }
     }

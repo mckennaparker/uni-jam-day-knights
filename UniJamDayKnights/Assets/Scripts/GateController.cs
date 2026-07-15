@@ -12,6 +12,8 @@ public class GateController : MonoBehaviour
     [Header("Behavior")]
     [SerializeField] private bool stayOpenOnceActivated;
 
+    [SerializeField] private Animator animator;
+
     public bool IsOpen { get; private set; }
 
     private Vector3 closedPosition;
@@ -21,6 +23,31 @@ public class GateController : MonoBehaviour
     {
         closedPosition = transform.position;
         openPosition = closedPosition + openOffset;
+        animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        if (RoomManager.Instance == null)
+        {
+            Debug.LogError("RoomManager not found.", this);
+            return;
+        }
+
+        RoomManager.Instance.OnDarkRoomStateChanged += ApplyRoomState;
+        ApplyRoomState(RoomManager.Instance.IsDarkRoom);
+    }
+    private void OnDisable()
+    {
+        if (RoomManager.Instance != null)
+        {
+            RoomManager.Instance.OnDarkRoomStateChanged -= ApplyRoomState;
+        }
+    }
+
+    private void ApplyRoomState(bool isDarkRoom)
+    {
+        animator.SetBool("IsDark", isDarkRoom);
     }
 
     private void Update()
