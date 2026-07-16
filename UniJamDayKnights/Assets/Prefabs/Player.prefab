@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8196543690508079042}
   - component: {fileID: 4983226749355545492}
   m_Layer: 8
-  m_Name: TestPlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
+  m_AlphaCutoff: 0.4
   m_ApplyToSortingLayers: 00000000b32abb842fc7728e456be72ec9a4f41db79b0f65e7a80d74
   m_ShapePath:
   - {x: -0.21875, y: -0.390625, z: 0}
@@ -246,30 +246,30 @@ MonoBehaviour:
   - {x: 0.21875, y: -0.390625, z: 0}
   m_ShapePathHash: 0
   m_InstanceId: 0
-  m_ShadowShape2DComponent: {fileID: 3245921853597292566}
+  m_ShadowShape2DComponent: {fileID: 2592473198927701090}
   m_ShadowShape2DProvider:
-    rid: 5493997186218459407
+    rid: 5493997186218459418
   m_ShadowCastingSource: 2
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.17875671, y: 0.3506317, z: 0}
+      m_Extent: {x: 0.11000061, y: 0.35920715, z: 0}
     m_EdgeProcessing: 1
     m_TrimEdge: 0.04
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.04
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0.04
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 0}
+  m_PreviousShadowShape2DSource: {fileID: 2592473198927701090}
   references:
     version: 2
     RefIds:
-    - rid: 5493997186218459407
-      type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+    - rid: 5493997186218459418
+      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
 --- !u!1 &8150091635199893228
 GameObject:

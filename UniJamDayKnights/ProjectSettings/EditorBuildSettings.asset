@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/UI/MainMenu.unity
+    guid: 1567c9abbfe405f40986c638dbbbdaa1
+  - enabled: 0
     path: Assets/Scenes/ToggleRoomTemplate.unity
     guid: 37cb48eae43a2c64b89148797fba3a22
   - enabled: 0
@@ -14,14 +17,23 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DarkRoomTemplate.unity
     guid: 646b5d62dab982c48bc6ca33b3137c61
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BrightRoomTemplate.unity
     guid: 0aa1a0234f796ba42942e16f9d1a2556
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GateTest.unity
     guid: ed9e1e91b82a67a4abea09a8e9af3646
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 83d5cabdce234534e91d380fb995766b
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level2.unity
+    guid: 4bb61d1ca0fca314db67d492f38c44dd
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level3.unity
+    guid: d020d713f2cdb46498841ee501fcf516
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
