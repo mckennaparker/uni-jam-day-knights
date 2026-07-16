@@ -106,7 +106,11 @@ public class PressureButton : MonoBehaviour
         OnPressedChanged?.Invoke(IsPressed);
 
         if(IsPressed)
+        {
+            AudioManager.Instance?.PlayButtonPress();
             OnPressed?.Invoke(this);
+        }
+            
     }
 
     private void UpdateButtonSprite()
