@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6666303824928938690}
   - component: {fileID: 4806843966541329862}
+  - component: {fileID: 1129079355591570315}
   m_Layer: 0
   m_Name: Spot Light 2D (1)
   m_TagString: Untagged
@@ -84,6 +85,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1129079355591570315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774549323072079123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28341a193168ce4db7625a5474ddaf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightPulse
+  minIntensity: 3
+  maxIntensity: 5
+  pulseSpeed: 2
 --- !u!1 &5286764061994598603
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8963114278503081484}
   - component: {fileID: 2329090970003828796}
+  - component: {fileID: 9202494170404523944}
   m_Layer: 0
   m_Name: Spot Light 2D
   m_TagString: Untagged
@@ -168,6 +185,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &9202494170404523944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286764061994598603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28341a193168ce4db7625a5474ddaf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightPulse
+  minIntensity: 3
+  maxIntensity: 5
+  pulseSpeed: 2
 --- !u!1 &7897979816298437375
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5816189782491944346}
   - component: {fileID: 2020690178173183454}
+  - component: {fileID: 8708522324354962897}
   m_Layer: 0
   m_Name: Spot Light 2D (2)
   m_TagString: Untagged
@@ -252,6 +285,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &8708522324354962897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897979816298437375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28341a193168ce4db7625a5474ddaf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightPulse
+  minIntensity: 3
+  maxIntensity: 5
+  pulseSpeed: 2
 --- !u!1 &8582807035071612166
 GameObject:
   m_ObjectHideFlags: 0

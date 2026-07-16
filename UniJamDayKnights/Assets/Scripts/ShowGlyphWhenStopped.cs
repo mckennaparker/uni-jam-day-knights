@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ShowGlyphWhenStopped : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class ShowGlyphWhenStopped : MonoBehaviour
     [SerializeField] private float stoppedDelay = 0.1f;
 
     private SpriteRenderer[] glyphRenderers;
+    private Light2D[] glyphLights;
+
     private float stoppedTimer;
     private bool isVisible;
 
     private void Awake()
     {
         glyphRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+        glyphLights = GetComponentsInChildren<Light2D>(true);
     }
 
     private void Start()
@@ -61,7 +65,18 @@ public class ShowGlyphWhenStopped : MonoBehaviour
 
         foreach (SpriteRenderer glyphRenderer in glyphRenderers)
         {
-            glyphRenderer.enabled = visible;
+            if (glyphRenderer != null)
+            {
+                glyphRenderer.enabled = visible;
+            }
+        }
+
+        foreach (Light2D glyphLight in glyphLights)
+        {
+            if (glyphLight != null)
+            {
+                glyphLight.enabled = visible;
+            }
         }
     }
 }

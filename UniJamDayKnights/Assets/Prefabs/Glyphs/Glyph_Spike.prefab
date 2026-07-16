@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4476327069046807120}
   - component: {fileID: 1290994754571666933}
+  - component: {fileID: 5164971512288640565}
   m_Layer: 0
   m_Name: Spot Light 2D
   m_TagString: Untagged
@@ -73,7 +74,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.45514876
+  m_PointLightOuterRadius: 0.6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -84,6 +85,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &5164971512288640565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043089151449318981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28341a193168ce4db7625a5474ddaf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightPulse
+  minIntensity: 1
+  maxIntensity: 2
+  pulseSpeed: 2
 --- !u!1 &5420895671777591186
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226251405076351077}
   - component: {fileID: 8133417220460609464}
+  - component: {fileID: 1932385676919890937}
   m_Layer: 10
   m_Name: Glyph_Spike
   m_TagString: Untagged
@@ -176,3 +193,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1932385676919890937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420895671777591186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600fe2848a20f2c4ab32091b55a019d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlyphFloatAndPulse
+  floatDistance: 0.05
+  floatSpeed: 1
+  minAlpha: 0.75
+  maxAlpha: 1
+  pulseSpeed: 1.2
+  randomizeStart: 1
