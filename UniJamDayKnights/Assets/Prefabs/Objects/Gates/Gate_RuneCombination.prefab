@@ -81,8 +81,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1905080529
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 153319352334132972, guid: 510e8a8c94bedae439c16d1d5bef4fbc, type: 3}
@@ -177,6 +177,7 @@ MonoBehaviour:
     requiredValue: 2
   - runeBlock: {fileID: 0}
     requiredValue: 3
+  progressIndicator: {fileID: 0}
 --- !u!95 &961912948428587339
 Animator:
   serializedVersion: 7
