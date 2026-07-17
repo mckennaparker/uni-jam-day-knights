@@ -39,6 +39,12 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("Scenes/UI/Credits");
     }
 
+    public void BackToMainMenu()
+    {
+        // Load main menu scene
+        SceneManager.LoadScene("Scenes/UI/MainMenu");
+    }
+
     public void QuitGame()
     {
         // Exit the game
