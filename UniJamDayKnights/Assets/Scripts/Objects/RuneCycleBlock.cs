@@ -24,6 +24,7 @@ public class RuneCycleBlock : MonoBehaviour
 
             if (playerHitFromBelow)
             {
+                AudioManager.Instance?.PlayInteraction();
                 AdvanceRune();
                 break;
             }

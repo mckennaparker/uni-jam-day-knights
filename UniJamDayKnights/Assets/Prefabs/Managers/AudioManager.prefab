@@ -50,7 +50,7 @@ MonoBehaviour:
   sfxSource: {fileID: 2939160038584430972}
   menuBGM: {fileID: 8300000, guid: fbcc7a05e0bce3b439c81c4619e55310, type: 3}
   buttonPressClip: {fileID: 8300000, guid: 639aa19b2ea8600458f0230ad0d84bb1, type: 3}
-  interactionClip: {fileID: 8300000, guid: 324f885b84271b64fa008e24c36e8e7e, type: 3}
+  interactionClip: {fileID: 8300000, guid: d94b30d28e1d68a41a97c9788a68a651, type: 3}
   leverClip: {fileID: 8300000, guid: 324f885b84271b64fa008e24c36e8e7e, type: 3}
   gateClip: {fileID: 8300000, guid: 040cdb0da62d1af42b880d7bece38573, type: 3}
   roomTransClip: {fileID: 8300000, guid: 77b1af8f297d2094db165f5139451060, type: 3}
