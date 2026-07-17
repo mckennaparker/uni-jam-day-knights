@@ -11,7 +11,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private bool isDarkRoom;
 
     [Header("Restart Settings")]
-    [SerializeField] private float restartDelay = 0.25f;
+    [SerializeField] private float restartDelay = 0.1f;
     public bool IsDarkRoom => isDarkRoom;
     public event Action<bool> OnDarkRoomStateChanged;
 
@@ -65,6 +65,16 @@ public class RoomManager : MonoBehaviour
 
         isRestarting = true;
         Invoke(nameof(ReloadCurrentScene), restartDelay);
+    }
+    public void RestartRoom(float delay)
+    {
+        if (isRestarting)
+        {
+            return;
+        }
+
+        isRestarting = true;
+        Invoke(nameof(ReloadCurrentScene), delay);
     }
 
     private void ReloadCurrentScene()

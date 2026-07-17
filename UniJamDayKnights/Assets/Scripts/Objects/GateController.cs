@@ -64,7 +64,11 @@ public class GateController : MonoBehaviour
             shouldOpen = true;
         }
 
-        IsOpen = shouldOpen;
+        if (shouldOpen != IsOpen)
+        {
+            IsOpen = shouldOpen;
+            AudioManager.Instance?.PlayGate();
+        }
 
         Vector3 targetPosition = IsOpen
             ? openPosition

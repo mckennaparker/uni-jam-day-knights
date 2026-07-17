@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animations")]
     [SerializeField] private Animator animator;
 
+    [SerializeField] private float footstepInterval = 0.2f;
+    private float footstepTimer;
+    private bool wasGrounded;
+
     private Rigidbody2D rb;
     private float horizInput;
     private bool facingRight = true;
@@ -49,8 +53,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
+
+
         FlipDirection();
         UpdateAnimation();
+        HandleLandingSound();
+        HandleFootsteps();
+        wasGrounded = grounded;
     }
 
     void FixedUpdate()
@@ -114,5 +123,32 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);
+    }
+
+    private void HandleFootsteps()
+    {
+        bool isWalking = grounded && Mathf.Abs(rb.linearVelocity.x) > 0.1f;
+
+        if (isWalking)
+        {
+            footstepTimer -= Time.deltaTime;
+
+            if (footstepTimer <= 0f)
+            {
+                AudioManager.Instance?.PlayFootstep();
+                footstepTimer = footstepInterval;
+            }
+        }
+        else
+        {
+            footstepTimer = 0f;
+        }
+    }
+    private void HandleLandingSound()
+    {
+        if (!wasGrounded && grounded)
+        {
+            AudioManager.Instance?.PlayFootstep();
+        }
     }
 }

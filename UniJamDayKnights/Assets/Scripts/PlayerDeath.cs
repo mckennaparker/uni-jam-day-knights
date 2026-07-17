@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    [SerializeField] private float deathRestartDelay = 0.25f;
     public bool IsDead { get; private set; }
 
     public void Die()
@@ -17,7 +18,7 @@ public class PlayerDeath : MonoBehaviour
 
         if (RoomManager.Instance != null)
         {
-            RoomManager.Instance.RestartRoom();
+            RoomManager.Instance?.RestartRoom(deathRestartDelay);
         }
         else
         {
@@ -36,6 +37,7 @@ public class PlayerDeath : MonoBehaviour
         }
 
         // player movement script disable
-        // GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
+        
     }
 }

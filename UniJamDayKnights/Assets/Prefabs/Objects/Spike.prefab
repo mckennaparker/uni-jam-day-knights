@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99be98e7f75e6a846b2e4e30d3dc86bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
+  deathSound: {fileID: 8300000, guid: 3464d84f22cf6ca48921afb0e86669f0, type: 3}
 --- !u!60 &5622023755978373510
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -200,12 +201,12 @@ MonoBehaviour:
     m_TrimEdge: 0.04
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.04
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0.04
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 4883959460842080761}
+  m_PreviousShadowShape2DSource: {fileID: 5622023755978373510}
   references:
     version: 2
     RefIds:

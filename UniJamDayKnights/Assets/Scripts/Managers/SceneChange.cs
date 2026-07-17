@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    float delay = 2f;
+    float delay = 0.15f;
     private int currentSceneIndex;
+    private bool isTransitioning;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,32 +14,18 @@ public class SceneChange : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        RespondToDebugKeys();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player") || isTransitioning)
         {
-            LoadNextScene();
+            return;
         }
-    }
 
-    private void RespondToDebugKeys()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("L pressed");
-            LoadNextScene();
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log("K pressed");
-            LoadPreviousScene();
-        }
+        isTransitioning = true;
+
+        AudioManager.Instance?.PlayRoomTrans();
+
+        Invoke(nameof(LoadNextScene), delay);
     }
 
     private void LoadNextScene()
@@ -52,20 +39,6 @@ public class SceneChange : MonoBehaviour
         else
         {
             Debug.LogWarning("There is no next scene in Build Settings.");
-        }
-    }
-
-    private void LoadPreviousScene()
-    {
-        int previousSceneIndex = currentSceneIndex - 1;
-
-        if (previousSceneIndex >= 0)
-        {
-            SceneManager.LoadScene(previousSceneIndex);
-        }
-        else
-        {
-            Debug.LogWarning("There is no previous scene.");
         }
     }
 }
