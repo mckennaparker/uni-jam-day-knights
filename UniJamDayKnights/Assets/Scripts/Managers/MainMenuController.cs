@@ -7,6 +7,8 @@ public class MainMenuController : MonoBehaviour
     [Header("Movement Stats")]
     [SerializeField] private GameObject mainMenuPanel;
 
+    [SerializeField] private string firstLevelName = "Level1";
+
     public AudioMixer audioMixer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,11 +22,16 @@ public class MainMenuController : MonoBehaviour
     {
         
     }
-
     public void PlayGame()
     {
-        // Load the first level of the game asynchronously
-        SceneManager.LoadScene("Scenes/Levels/Level1");
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeToScene(firstLevelName);
+        }
+        else
+        {
+            SceneManager.LoadScene(firstLevelName);
+        }
     }
 
     public void ViewOptions()

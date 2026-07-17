@@ -56,6 +56,13 @@ public class FadeManager : MonoBehaviour
 
         StartCoroutine(NormalSceneTransition(sceneIndex));
     }
+    public void FadeToScene(string sceneName)
+    {
+        if (isFading)
+            return;
+
+        StartCoroutine(NormalSceneTransition(sceneName));
+    }
 
     public void FadeRestartScene(float delayBeforeFade = 0f)
     {
@@ -81,6 +88,23 @@ public class FadeManager : MonoBehaviour
         yield return Fade(Color.black, 0f, 1f, fadeOutDuration);
 
         SceneManager.LoadScene(sceneIndex);
+
+        yield return null;
+
+        yield return Fade(Color.black, 1f, 0f, fadeInDuration);
+
+        isFading = false;
+    }
+
+    private IEnumerator NormalSceneTransition(string sceneName)
+    {
+        isFading = true;
+
+        AudioManager.Instance?.PlayRoomTrans();
+
+        yield return Fade(Color.black, 0f, 1f, fadeOutDuration);
+
+        SceneManager.LoadScene(sceneName);
 
         yield return null;
 
