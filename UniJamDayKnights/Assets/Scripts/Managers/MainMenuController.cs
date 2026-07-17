@@ -9,7 +9,7 @@ public class MainMenuController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        AudioManager.Instance?.PlayMenuBGM();
     }
 
     // Update is called once per frame
