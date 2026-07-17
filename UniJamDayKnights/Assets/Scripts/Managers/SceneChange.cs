@@ -38,6 +38,7 @@ public class SceneChange : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance?.PlaylongJingle();    // play game clear sound here for now
             Debug.LogWarning("There is no next scene in Build Settings.");
         }
     }

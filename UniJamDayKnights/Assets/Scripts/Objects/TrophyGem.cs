@@ -66,6 +66,8 @@ public class TrophyGem : MonoBehaviour
 
         gemCollider.enabled = false;
 
+        AudioManager.Instance?.PlayshortJingle();
+
         StartCoroutine(CollectSpiral());
     }
 

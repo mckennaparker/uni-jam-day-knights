@@ -18,6 +18,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip gateClip;
     [SerializeField] private AudioClip roomTransClip;
 
+    [SerializeField] private AudioClip shortJingleClip;
+    [SerializeField] private AudioClip longJingleClip;
+
+
     [SerializeField] private AudioClip[] footstepSounds;
 
     private void Awake()
@@ -53,6 +57,14 @@ public class AudioManager : MonoBehaviour
     public void PlayRoomTrans()
     {
         PlaySfx(roomTransClip);
+    }
+    public void PlayshortJingle()
+    {
+        PlaySfx(shortJingleClip);
+    }
+    public void PlaylongJingle()
+    {
+        PlaySfx(longJingleClip);
     }
     public void PlayFootstep()
     {
