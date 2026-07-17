@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MainMenuController : MonoBehaviour
 {
     [Header("Movement Stats")]
     [SerializeField] private GameObject mainMenuPanel;
+
+    public AudioMixer audioMixer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,10 +39,26 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("Scenes/UI/Credits");
     }
 
+    public void BackToMainMenu()
+    {
+        // Load main menu scene
+        SceneManager.LoadScene("Scenes/UI/MainMenu");
+    }
+
     public void QuitGame()
     {
         // Exit the game
         Debug.Log("Quitting game..."); // helpful since this won't fire in the Editor
         Application.Quit();
+    }
+
+    public void UpdateMusicVolume(float volume)
+    {
+        audioMixer.SetFloat("MusicVolume", volume);
+    }
+
+    public void UpdateSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("SFXVolume", volume);
     }
 }
