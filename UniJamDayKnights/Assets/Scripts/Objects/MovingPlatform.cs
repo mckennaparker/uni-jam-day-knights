@@ -9,6 +9,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] public float moveDistance = 2f;
 
     [SerializeField] public bool isHorizontal;
+    [SerializeField] public bool leftFirst; // Equivalent to downFirst for vertical platforms
     [SerializeField] private Transform glyphs;
 
     private void Awake()
@@ -38,11 +39,25 @@ public class MovingPlatform : MonoBehaviour
 
         if (isHorizontal)
         {
-            targetPosition.x += offset;
+            if (leftFirst)
+            {
+                targetPosition.x -= offset;
+            }
+            else
+            {
+                targetPosition.x += offset;
+            }
         }
         else
         {
-            targetPosition.y += offset;
+            if (leftFirst)
+            {
+                targetPosition.y -= offset;
+            }
+            else
+            {
+                targetPosition.y += offset;
+            }
         }
 
         rb.MovePosition(targetPosition);
