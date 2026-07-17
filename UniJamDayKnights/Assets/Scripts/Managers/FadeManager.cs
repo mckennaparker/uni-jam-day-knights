@@ -14,6 +14,10 @@ public class FadeManager : MonoBehaviour
     [SerializeField] private float fadeInDuration = 0.5f;
     [SerializeField] private float fadeOutDuration = 0.5f;
 
+    [Header("Restart Fade")]
+    [SerializeField] private float restartFadeOutDuration = 0.2f;
+    [SerializeField] private float restartFadeInDuration = 0.25f;
+
     [Header("Final Transition")]
     [SerializeField] private float finalFadeDuration = 3f;
     [SerializeField] private float finalWhiteHoldDuration = 1f;
@@ -53,6 +57,13 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(NormalSceneTransition(sceneIndex));
     }
 
+    public void FadeRestartScene(float delayBeforeFade = 0f)
+    {
+        if (isFading)
+            return;
+
+        StartCoroutine(RestartSceneTransition(delayBeforeFade));
+    }
     public void FadeToFinalScene(int sceneIndex)
     {
         if (isFading)
@@ -78,6 +89,34 @@ public class FadeManager : MonoBehaviour
         isFading = false;
     }
 
+    private IEnumerator RestartSceneTransition(float delayBeforeFade)
+    {
+        isFading = true;
+
+        if (delayBeforeFade > 0f)
+            yield return new WaitForSecondsRealtime(delayBeforeFade);
+
+        yield return Fade(
+            Color.black,
+            0f,
+            1f,
+            restartFadeOutDuration
+        );
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+
+        yield return null;
+
+        yield return Fade(
+            Color.black,
+            1f,
+            0f,
+            restartFadeInDuration
+        );
+
+        isFading = false;
+    }
     private IEnumerator FinalSceneTransition(int sceneIndex)
     {
         isFading = true;

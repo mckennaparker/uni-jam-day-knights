@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
@@ -7,6 +8,10 @@ public class SceneChange : MonoBehaviour
 
     private int currentSceneIndex;
     private bool isTransitioning;
+
+    [Header("Final Sequence")]
+    [SerializeField] private float finalAutoWalkDuration = 2.5f;
+    [SerializeField] private float finalAutoWalkDirection = 1f;
 
     private void Start()
     {
@@ -37,10 +42,34 @@ public class SceneChange : MonoBehaviour
         }
 
         string currentSceneName = SceneManager.GetActiveScene().name;
+        bool isFinalLevel = currentSceneName == finalLevelName;
 
-        if (currentSceneName == finalLevelName)
-            FadeManager.Instance.FadeToFinalScene(nextSceneIndex);
+
+        if (isFinalLevel)
+        {
+            PlayerMovement playerMovement =
+                collision.GetComponent<PlayerMovement>();
+
+            StartCoroutine(
+                FinalSequence(playerMovement, nextSceneIndex)
+            );
+        }
         else
+        {
             FadeManager.Instance.FadeToScene(nextSceneIndex);
+        }
+
+    }
+
+    private IEnumerator FinalSequence(
+        PlayerMovement playerMovement,
+        int nextSceneIndex)
+    {
+        if (playerMovement != null)
+            playerMovement.StartAutoWalk(finalAutoWalkDirection);
+
+        yield return new WaitForSeconds(1f);
+
+        FadeManager.Instance.FadeToFinalScene(nextSceneIndex);
     }
 }

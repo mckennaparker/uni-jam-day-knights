@@ -56,25 +56,32 @@ public class RoomManager : MonoBehaviour
         isDarkRoom = dark;
         OnDarkRoomStateChanged?.Invoke(isDarkRoom);
     }
-    public void RestartRoom()
-    {
-        if (isRestarting)
-        {
-            return;
-        }
+    //public void RestartRoom()
+    //{
+    //    if (isRestarting)
+    //    {
+    //        return;
+    //    }
 
-        isRestarting = true;
-        Invoke(nameof(ReloadCurrentScene), restartDelay);
-    }
-    public void RestartRoom(float delay)
+    //    isRestarting = true;
+    //    Invoke(nameof(ReloadCurrentScene), restartDelay);
+    //}
+    public void RestartRoom(float delayBeforeFade = 0f)
     {
-        if (isRestarting)
+        if (FadeManager.Instance != null)
         {
-            return;
+            FadeManager.Instance.FadeRestartScene(delayBeforeFade);
         }
+        else
+        {
+            Debug.LogWarning(
+                "FadeManager was not found. Restarting without fade."
+            );
 
-        isRestarting = true;
-        Invoke(nameof(ReloadCurrentScene), delay);
+            SceneManager.LoadScene(
+                SceneManager.GetActiveScene().buildIndex
+            );
+        }
     }
 
     private void ReloadCurrentScene()

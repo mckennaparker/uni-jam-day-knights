@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     private float horizInput;
     private bool facingRight = true;
 
+    private bool isAutoWalking;
+    private float autoWalkDirection;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,14 +38,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        horizInput = Input.GetAxisRaw("Horizontal");
+        if (isAutoWalking)
+            horizInput = autoWalkDirection;
+        else
+            horizInput = Input.GetAxisRaw("Horizontal");
+
         if (Input.GetButtonDown("Jump"))
             jumpBufferCounter = jumpBufferTime;
         else
             jumpBufferCounter -= Time.deltaTime;
         
 
-        if (jumpBufferCounter > 0f && IsGrounded()) // while pressing: jumping up
+        if (jumpBufferCounter > 0f && IsGrounded() && !isAutoWalking) // while pressing: jumping up
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jumpBufferCounter = 0f;
@@ -150,5 +157,16 @@ public class PlayerMovement : MonoBehaviour
         {
             AudioManager.Instance?.PlayFootstep();
         }
+    }
+    public void StartAutoWalk(float direction = 1f)
+    {
+        isAutoWalking = true;
+        autoWalkDirection = Mathf.Sign(direction);
+    }
+
+    public void StopAutoWalk()
+    {
+        isAutoWalking = false;
+        autoWalkDirection = 0f;
     }
 }
