@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f5b8f23fc456c47afb3b90fdc613e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBGM
-  brightRoomBGM: {fileID: 8300000, guid: b6f3feabe67207c42b2312f2689e3663, type: 3}
+  brightRoomBGM: {fileID: 8300000, guid: c42dbfebb1c719c419854ae6fc538bfa, type: 3}
   darkRoomBGM: {fileID: 8300000, guid: 47a23b8be925f30458cb4076051fbdd4, type: 3}

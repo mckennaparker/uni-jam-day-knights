@@ -98,7 +98,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDistance: 2
   isHorizontal: 0
-  glyphs: {fileID: 0}
+  glyphs: {fileID: 3310013037801464409}
 --- !u!1839735485 &8053327423041720489
 Tilemap:
   m_ObjectHideFlags: 0
