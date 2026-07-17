@@ -2,28 +2,34 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    [SerializeField] private float deathRestartDelay = 0.25f;
+    [SerializeField] private float deathRestartDelay = 2f;
+    [SerializeField] private ParticleSystem deathParticlesPrefab;
+
     public bool IsDead { get; private set; }
 
     public void Die()
     {
         if (IsDead)
-        {
             return;
-        }
 
         IsDead = true;
+
+        ParticleSystem particles = Instantiate(
+            deathParticlesPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        particles.gameObject.SetActive(true);
+        particles.Play(true);
+
 
         DisablePlayerMovement();
 
         if (RoomManager.Instance != null)
-        {
-            RoomManager.Instance?.RestartRoom(deathRestartDelay);
-        }
+            RoomManager.Instance.RestartRoom(deathRestartDelay);
         else
-        {
             Debug.LogError("RoomManager was not found in the scene.");
-        }
     }
 
     private void DisablePlayerMovement()
@@ -36,8 +42,7 @@ public class PlayerDeath : MonoBehaviour
             rb.simulated = false;
         }
 
-        // player movement script disable
         GetComponent<PlayerMovement>().enabled = false;
-        
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

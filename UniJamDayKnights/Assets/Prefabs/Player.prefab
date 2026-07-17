@@ -85,7 +85,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 502572233
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2441852159786370557, guid: e182ce0b24009ec478d4f3f6c5ef16ea, type: 3}
@@ -174,6 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f4950340d5aed4eb142cb7929ae344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
+  deathRestartDelay: 0.25
+  deathParticlesPrefab: {fileID: 6142175589932793840, guid: 4f6b89c7006954647a31c7009a9d54c3, type: 3}
 --- !u!114 &7333220461474828422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +198,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animator: {fileID: 8196543690508079042}
+  footstepInterval: 0.2
 --- !u!95 &8196543690508079042
 Animator:
   serializedVersion: 7
