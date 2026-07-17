@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    Vector2 startPos, movePos;
+    Vector2 startPos;
     private Rigidbody2D rb;
 
-    public float moveSpeed = 1f;
-    public float moveDistance = 2f;
+    [SerializeField] public float moveSpeed = 1f;
+    [SerializeField] public float moveDistance = 2f;
 
-    public bool isHorizontal;
+    [SerializeField] public bool isHorizontal;
     [SerializeField] private Transform glyphs;
 
     private void Awake()

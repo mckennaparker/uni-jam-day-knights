@@ -51,14 +51,14 @@ TagManager:
   - name: Tiles
     uniqueID: 786918213
     locked: 0
-  - name: Player
-    uniqueID: 502572233
-    locked: 0
   - name: Glyphs
     uniqueID: 1695521719
     locked: 0
   - name: Fonts
     uniqueID: 1947052263
+    locked: 0
+  - name: Player
+    uniqueID: 502572233
     locked: 0
   m_RenderingLayers:
   - Default

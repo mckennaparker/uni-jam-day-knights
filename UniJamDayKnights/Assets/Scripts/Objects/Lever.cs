@@ -66,6 +66,7 @@ public class Lever : MonoBehaviour
 
         IsActivated = activated;
 
+        AudioManager.Instance?.PlayLever();
         OnStateChanged?.Invoke(this, IsActivated);
 
         if (IsActivated)
