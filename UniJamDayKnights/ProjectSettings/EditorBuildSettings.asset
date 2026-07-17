@@ -54,6 +54,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/LeverDark.unity
     guid: c383dbe3781fd394480134e45a3637a5
   - enabled: 1
+    path: Assets/Scenes/FinalTrophyRoom.unity
+    guid: 931fe8cf54d00c643b4037cfe25035e5
+  - enabled: 1
     path: Assets/Scenes/UI/Credits.unity
     guid: 5c02a9f3cfb03524e97646a8ff436e8d
   - enabled: 1

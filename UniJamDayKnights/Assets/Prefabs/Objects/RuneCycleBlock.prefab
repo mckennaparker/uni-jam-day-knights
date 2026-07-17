@@ -304,7 +304,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6366378906311090559}
@@ -598,10 +598,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuneCycleBlock
   numberRunes:
-  - {fileID: 2720134489676209243, guid: f5240dfe7012711438bba54b4290940a, type: 3}
-  - {fileID: -3792605786618731397, guid: 5a04a508c78f8064c87c3f2432f6acf3, type: 3}
-  - {fileID: -8173441778437009482, guid: e502cfa63faa01345851deb34f2503d3, type: 3}
-  - {fileID: -4520288836386019558, guid: 7712ba50d0d1274468a7158514935e25, type: 3}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -2421060152572541846, guid: 8c1fbfad0d46f3c4da3c0a3ae379b25f, type: 3}
+  - {fileID: -8503419732281817551, guid: 9b0a4f36e4e5d1e4984bb1f92af567eb, type: 3}
+  - {fileID: 4417398106132842350, guid: d8a37bbf3b2262a4cac5c86109902609, type: 3}
+  - {fileID: 4242130610972119737, guid: 9ccf2413941e96a4f8eec19e4b31bb3f, type: 3}
+  - {fileID: 4673004002971566779, guid: 92885e1ff75ee314683cb3e38ea5c62f, type: 3}
+  - {fileID: 4845832796558199565, guid: 26bd02b375bce544ba1c56849afefdf4, type: 3}
+  - {fileID: -5385591422051540550, guid: 581889cc3e923d04f8e34b3ae4334ed6, type: 3}
   numberRenderer: {fileID: 2569957647928863944}
   currentIndex: 0
 --- !u!61 &1033611422289270065
