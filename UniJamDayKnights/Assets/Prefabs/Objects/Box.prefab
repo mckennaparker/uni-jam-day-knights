@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3297177085030462778}
   - component: {fileID: 823392599468065917}
   - component: {fileID: 1441082644410928889}
+  - component: {fileID: 487907682831760621}
   m_Layer: 6
   m_Name: Box
   m_TagString: Untagged
@@ -211,7 +212,7 @@ MonoBehaviour:
     m_TrimEdge: 0.05
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.05
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0.05
   m_PreviousEdgeProcessing: 1
@@ -334,6 +335,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoxAudio
   rb: {fileID: 4797822842026050096}
   audioSource: {fileID: 823392599468065917}
+--- !u!114 &487907682831760621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208393039250795293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61eae06ab96cfb47b08ffc0f3452349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PushableBox
 --- !u!1001 &4821764156093625213
 PrefabInstance:
   m_ObjectHideFlags: 0
