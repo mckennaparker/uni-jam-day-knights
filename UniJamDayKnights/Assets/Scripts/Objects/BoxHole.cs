@@ -7,6 +7,8 @@ public class BoxHole : MonoBehaviour
     [SerializeField] private GameObject filledFloor;
     [SerializeField] private float dropDuration = 0.2f;
 
+    [SerializeField] private PressureButton pressureButton;
+
     private Collider2D holeTrigger;
     private bool isFilled;
 
@@ -92,5 +94,8 @@ public class BoxHole : MonoBehaviour
 
         if (filledFloor != null)
             filledFloor.SetActive(true);
+
+        if (pressureButton != null)
+            pressureButton.SetPressed(true);
     }
 }

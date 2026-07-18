@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    Vector2 startPos;
+    private Vector2 startPos;
+    private Vector2 previousPosition;
     private Rigidbody2D rb;
+    private float elapsedTime;
 
-    [SerializeField] public float moveSpeed = 1f;
-    [SerializeField] public float moveDistance = 2f;
+    public Vector2 Velocity { get; private set; }
 
-    [SerializeField] public bool isHorizontal;
-    [SerializeField] public bool leftFirst; // Equivalent to downFirst for vertical platforms
+    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float moveDistance = 2f;
+
+    [SerializeField] private bool isHorizontal;
+    [SerializeField] private bool leftFirst;
     [SerializeField] private Transform glyphs;
 
     private void Awake()
@@ -17,49 +21,39 @@ public class MovingPlatform : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         startPos = rb.position;
+        previousPosition = rb.position;
+        elapsedTime = 0f;
 
         if (glyphs != null)
         {
-            glyphs.localRotation = isHorizontal
-                ? Quaternion.Euler(0f, 0f, 90f)
-                : Quaternion.identity;
+            glyphs.localRotation = isHorizontal ? Quaternion.Euler(0f, 0f, 90f) : Quaternion.identity;
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        float offset = Mathf.Sin(Time.fixedTime * moveSpeed) * moveDistance;
+        elapsedTime += Time.fixedDeltaTime;
+
+        float offset = Mathf.Sin(elapsedTime * moveSpeed) * moveDistance;
+
         Vector2 targetPosition = startPos;
 
         if (isHorizontal)
         {
-            if (leftFirst)
-            {
-                targetPosition.x -= offset;
-            }
-            else
-            {
-                targetPosition.x += offset;
-            }
+            targetPosition.x += leftFirst ? -offset : offset;
         }
         else
         {
-            if (leftFirst)
-            {
-                targetPosition.y -= offset;
-            }
-            else
-            {
-                targetPosition.y += offset;
-            }
+            targetPosition.y += leftFirst ? -offset : offset;
         }
 
+        Velocity = (targetPosition - previousPosition) / Time.fixedDeltaTime;
+
         rb.MovePosition(targetPosition);
+
+        previousPosition = targetPosition;
     }
 }

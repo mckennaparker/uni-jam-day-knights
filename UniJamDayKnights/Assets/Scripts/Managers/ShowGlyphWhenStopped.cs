@@ -10,6 +10,7 @@ public class ShowGlyphWhenStopped : MonoBehaviour
     [SerializeField] private float speedThreshold = 0.05f;
     [SerializeField] private float stoppedDelay = 0.1f;
 
+    [Header("Glyph Objects")]
     private SpriteRenderer[] glyphRenderers;
     private Light2D[] glyphLights;
 

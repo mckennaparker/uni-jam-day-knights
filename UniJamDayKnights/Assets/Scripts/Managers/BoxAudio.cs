@@ -3,18 +3,15 @@ using UnityEngine.Audio;
 
 public class BoxAudio : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private AudioSource audioSource;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private PushableBox pushableBox;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (rb.linearVelocity.magnitude > 0.1f)
+        float horizontalSpeed =
+            Mathf.Abs(pushableBox.RelativeVelocity.x);
+
+        if (horizontalSpeed > 0.1f)
         {
             if (!audioSource.isPlaying)
                 audioSource.Play();

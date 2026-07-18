@@ -335,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoxAudio
   rb: {fileID: 4797822842026050096}
   audioSource: {fileID: 823392599468065917}
+  pushableBox: {fileID: 487907682831760621}
 --- !u!114 &487907682831760621
 MonoBehaviour:
   m_ObjectHideFlags: 0

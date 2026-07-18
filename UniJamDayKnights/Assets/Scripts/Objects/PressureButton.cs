@@ -32,7 +32,6 @@ public class PressureButton : MonoBehaviour
     public event Action<PressureButton> OnPressed;
     public event Action<bool> OnPressedChanged;
 
-
     private void Awake()
     {
         if (buttonTop == null)
@@ -123,6 +122,20 @@ public class PressureButton : MonoBehaviour
         buttonRenderer.sprite = IsPressed
             ? pressedSprite
             : releasedSprite;
+    }
+
+    public void SetPressed(bool pressed)
+    {
+        if (IsPressed == pressed)
+            return;
+
+        IsPressed = pressed;
+        UpdateButtonSprite();
+
+        if (IsPressed)
+        {
+            OnPressed?.Invoke(this);
+        }
     }
 
 }
