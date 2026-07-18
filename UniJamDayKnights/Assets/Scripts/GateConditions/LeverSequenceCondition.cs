@@ -10,6 +10,9 @@ public class LeverSequenceCondition : GateCondition
     [Header("Reset Behavior")]
     [SerializeField] private float resetDelay = 0.5f;
 
+    [Header("Progress Indicator")]
+    [SerializeField] private PuzzleProgressIndicator progressIndicator;
+
     private readonly List<Lever> enteredSequence = new();
 
     private bool completed;
@@ -90,6 +93,8 @@ public class LeverSequenceCondition : GateCondition
             $"{correctSequence.Length}: {changedLever.name}"
         );
 
+        UpdateProgressIndicator();
+
         // # of current on levers don't match the answer
         if (CountActivatedLevers() != enteredSequence.Count)
         {
@@ -129,6 +134,7 @@ public class LeverSequenceCondition : GateCondition
 
         completed = true;
         Debug.Log("Lever sequence completed.");
+        UpdateProgressIndicator();
     }
 
     private int CountActivatedLevers()
@@ -165,6 +171,7 @@ public class LeverSequenceCondition : GateCondition
     private void ResetAllLeversImmediately()
     {
         enteredSequence.Clear();
+        UpdateProgressIndicator();
 
         foreach (Lever lever in correctSequence)
         {
@@ -173,5 +180,17 @@ public class LeverSequenceCondition : GateCondition
                 lever.SetActivated(false);
             }
         }
+    }
+
+    private void UpdateProgressIndicator()
+    {
+        if (progressIndicator == null)
+        {
+            return;
+        }
+
+        progressIndicator.SetProgress(
+            enteredSequence.Count
+        );
     }
 }
