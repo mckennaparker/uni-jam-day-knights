@@ -17,7 +17,6 @@ public class BoxHole : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log($"Trigger touching: {other.name}");
         if (isFilled)
             return;
 
@@ -40,7 +39,7 @@ public class BoxHole : MonoBehaviour
         bool fullyInsideHorizontally =
             boxBounds.min.x >= triggerBounds.min.x &&
             boxBounds.max.x <= triggerBounds.max.x;
-        Debug.Log($"Fully inside horizontally: {fullyInsideHorizontally}");
+
         if (!fullyInsideHorizontally)
             return;
 
