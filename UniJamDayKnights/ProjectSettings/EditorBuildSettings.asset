@@ -69,7 +69,25 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level10-11.unity
     guid: 0c6debfb7155fd0448841d78c5ec14bb
   - enabled: 1
-    path: Assets/Scenes/Levels/FinalTrophyRoom.unity
+    path: Assets/Scenes/Levels/Level11.unity
+    guid: 2738f860eaa5a9d4da51c9d996ac2d5c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level12.unity
+    guid: 1bda1d26a1a63ee4fbf0d29e0dab06ca
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level12-13.unity
+    guid: 8a3170a0e037ce8449e2efdffe5bf251
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level13.unity
+    guid: d6ca95e2117637f4297df6aa4d874a62
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level14.unity
+    guid: 251d378ac0056474db2856a17cef77f4
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level14-15.unity
+    guid: c07f3ca1a26478345b77278be0c9ca91
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelEnd.unity
     guid: 931fe8cf54d00c643b4037cfe25035e5
   - enabled: 1
     path: Assets/Scenes/UI/Credits.unity

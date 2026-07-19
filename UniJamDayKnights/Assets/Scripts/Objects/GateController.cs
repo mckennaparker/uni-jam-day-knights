@@ -14,6 +14,9 @@ public class GateController : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [Header("Glyphs")]
+    [SerializeField] private GameObject[] glyphs;
+
     public bool IsOpen { get; private set; }
 
     private Vector3 closedPosition;
@@ -67,6 +70,7 @@ public class GateController : MonoBehaviour
         if (shouldOpen != IsOpen)
         {
             IsOpen = shouldOpen;
+            SetGlyphsVisible(!IsOpen);
             AudioManager.Instance?.PlayGate();
         }
 
@@ -79,5 +83,21 @@ public class GateController : MonoBehaviour
             targetPosition,
             moveSpeed * Time.deltaTime
         );
+    }
+
+    private void SetGlyphsVisible(bool visible)
+    {
+        if (glyphs == null)
+        {
+            return;
+        }
+
+        foreach (GameObject glyph in glyphs)
+        {
+            if (glyph != null)
+            {
+                glyph.SetActive(visible);
+            }
+        }
     }
 }

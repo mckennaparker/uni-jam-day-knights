@@ -15,6 +15,9 @@ public class FakeFloorFade : MonoBehaviour
     [Header("Behavior")]
     [SerializeField] private bool disableAfterFade = true;
 
+    [Header("Hidden Glyphs")]
+    [SerializeField] private GameObject hiddenGlyphGroup;
+
     private bool activated;
 
     private Coroutine fadeCoroutine;
@@ -40,6 +43,15 @@ public class FakeFloorFade : MonoBehaviour
             originalColor = fakeFloorTilemap.color;
         }
     }
+    private void Start()
+    {
+        if (fakeFloorTilemap != null)
+        {
+            originalColor = fakeFloorTilemap.color;
+        }
+
+        SetGlyphsVisible(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -50,6 +62,7 @@ public class FakeFloorFade : MonoBehaviour
 
         playerInside = true;
 
+        SetGlyphsVisible(true);
         StartFade(false);
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -61,6 +74,7 @@ public class FakeFloorFade : MonoBehaviour
 
         playerInside = false;
 
+        SetGlyphsVisible(false);
         StartFade(true);
     }
     private void StartFade(bool fadeIn)
@@ -106,6 +120,17 @@ public class FakeFloorFade : MonoBehaviour
         }
 
         fakeFloorTilemap.color = end;
+     
         fadeCoroutine = null;
+    }
+
+    private void SetGlyphsVisible(bool visible)
+    {
+        if (hiddenGlyphGroup == null)
+        {
+            return;
+        }
+
+        hiddenGlyphGroup.SetActive(visible);
     }
 }
