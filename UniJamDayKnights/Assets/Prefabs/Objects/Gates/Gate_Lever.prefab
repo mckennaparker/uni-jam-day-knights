@@ -374,15 +374,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingCrushDetector
   movingRoot: {fileID: 1119612697123243598}
+  localCrushDirection: {x: 0, y: -1}
   solidLayers:
     serializedVersion: 2
     m_Bits: 320
   minimumMoveSpeed: 0.05
   obstacleCheckDistance: 0.2
+  directionThreshold: 0.5
   teleportThreshold: 3
-  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
   showDebugLogs: 0
   drawDebugRay: 1
+  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
 --- !u!1001 &6817676502661854502
 PrefabInstance:
   m_ObjectHideFlags: 0

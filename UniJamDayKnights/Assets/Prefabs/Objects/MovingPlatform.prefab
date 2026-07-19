@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.5, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &667131231993573231
 MonoBehaviour:
@@ -92,15 +92,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingCrushDetector
   movingRoot: {fileID: 7873806460243297999}
+  localCrushDirection: {x: -1, y: 0}
   solidLayers:
     serializedVersion: 2
     m_Bits: 320
   minimumMoveSpeed: 0.05
   obstacleCheckDistance: 0.2
+  directionThreshold: 0.5
   teleportThreshold: 3
-  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
   showDebugLogs: 0
   drawDebugRay: 1
+  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
 --- !u!1 &3437968599262722667
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +666,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.5, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &234029176477153508
 MonoBehaviour:
@@ -679,15 +681,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingCrushDetector
   movingRoot: {fileID: 7873806460243297999}
+  localCrushDirection: {x: 1, y: 0}
   solidLayers:
     serializedVersion: 2
     m_Bits: 320
   minimumMoveSpeed: 0.05
   obstacleCheckDistance: 0.2
+  directionThreshold: 0.5
   teleportThreshold: 3
-  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
   showDebugLogs: 0
   drawDebugRay: 1
+  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
 --- !u!1 &6429231875332762477
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,15 +784,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingCrushDetector
   movingRoot: {fileID: 7873806460243297999}
+  localCrushDirection: {x: 0, y: -1}
   solidLayers:
     serializedVersion: 2
     m_Bits: 320
   minimumMoveSpeed: 0.05
   obstacleCheckDistance: 0.2
+  directionThreshold: 0.5
   teleportThreshold: 3
-  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
   showDebugLogs: 0
   drawDebugRay: 1
+  deathSound: {fileID: 8300000, guid: 2e496e03edcfd2844883b7ae86d14ab2, type: 3}
 --- !u!1001 &4389604967446948412
 PrefabInstance:
   m_ObjectHideFlags: 0

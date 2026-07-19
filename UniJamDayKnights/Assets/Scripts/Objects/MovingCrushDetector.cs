@@ -5,17 +5,21 @@ public class MovingCrushDetector : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform movingRoot;
 
+    [Header("Detector Direction")]
+    [SerializeField] private Vector2 localCrushDirection = Vector2.right;
+
     [Header("Detection")]
     [SerializeField] private LayerMask solidLayers;
     [SerializeField] private float minimumMoveSpeed = 0.05f;
     [SerializeField] private float obstacleCheckDistance = 0.2f;
+    [SerializeField] private float directionThreshold = 0.5f;
     [SerializeField] private float teleportThreshold = 3f;
-
-    [SerializeField] private AudioClip deathSound;
 
     [Header("Debug")]
     [SerializeField] private bool showDebugLogs;
     [SerializeField] private bool drawDebugRay = true;
+
+    [SerializeField] private AudioClip deathSound;
 
     private Vector3 previousPosition;
     private Vector2 movementVelocity;
@@ -60,76 +64,44 @@ public class MovingCrushDetector : MonoBehaviour
         if (movementVelocity.magnitude < minimumMoveSpeed)
             return;
 
+        Vector2 crushDirection = GetWorldCrushDirection();
         Vector2 moveDirection = movementVelocity.normalized;
 
-        if (!IsPlayerInFront(other, moveDirection))
+        float directionMatch = Vector2.Dot(moveDirection, crushDirection);
+
+        if (directionMatch < directionThreshold)
             return;
 
-        if (!HasBlockingSurface(other, moveDirection))
+        if (!HasBlockingSurface(other, crushDirection))
             return;
 
         playerKilled = true;
 
         if (showDebugLogs)
-            Debug.Log($"Player crushed by {movingRoot.name}", this);
+            Debug.Log($"Player crushed by {movingRoot.name} toward {crushDirection}", this);
 
         PlayerDeath playerDeath = other.GetComponent<PlayerDeath>();
         AudioManager.Instance?.PlaySfx(deathSound);
         playerDeath.Die();
     }
 
-    private bool IsPlayer(Collider2D other)
+    private Vector2 GetWorldCrushDirection()
     {
-        if (other.CompareTag("Player"))
-            return true;
-
-        if (other.attachedRigidbody != null &&
-            other.attachedRigidbody.CompareTag("Player"))
-            return true;
-
-        return false;
+        Vector3 worldDirection = transform.TransformDirection(localCrushDirection);
+        return ((Vector2)worldDirection).normalized;
     }
 
-    private bool IsPlayerInFront(Collider2D playerCollider, Vector2 moveDirection)
+    private bool HasBlockingSurface(Collider2D playerCollider, Vector2 direction)
     {
-        Vector2 moverCenter = transform.position;
-        Vector2 playerCenter = playerCollider.bounds.center;
-        Vector2 directionToPlayer = playerCenter - moverCenter;
+        Bounds bounds = playerCollider.bounds;
 
-        float dot = Vector2.Dot(directionToPlayer, moveDirection);
+        float playerExtent = Mathf.Abs(direction.x) * bounds.extents.x +
+                             Mathf.Abs(direction.y) * bounds.extents.y;
 
-        if (showDebugLogs)
-            Debug.Log($"Player front dot: {dot}", this);
+        float distance = playerExtent + obstacleCheckDistance;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(bounds.center, direction, distance, solidLayers);
 
-        return dot > 0f;
-    }
-
-    private bool HasBlockingSurface(Collider2D playerCollider, Vector2 moveDirection)
-    {
-        Bounds playerBounds = playerCollider.bounds;
-
-        float playerExtent =
-            Mathf.Abs(moveDirection.x) * playerBounds.extents.x +
-            Mathf.Abs(moveDirection.y) * playerBounds.extents.y;
-
-        float checkDistance = playerExtent + obstacleCheckDistance;
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll(
-            playerBounds.center,
-            moveDirection,
-            checkDistance,
-            solidLayers
-        );
-
-        if (drawDebugRay)
-        {
-            Debug.DrawRay(
-                playerBounds.center,
-                moveDirection * checkDistance,
-                hits.Length > 0 ? Color.red : Color.green,
-                Time.fixedDeltaTime
-            );
-        }
+        bool foundSurface = false;
 
         foreach (RaycastHit2D hit in hits)
         {
@@ -146,11 +118,30 @@ public class MovingCrushDetector : MonoBehaviour
                 continue;
             }
 
-            if (showDebugLogs)
-                Debug.Log($"Blocking surface: {hit.collider.name}", this);
+            foundSurface = true;
 
-            return true;
+            if (showDebugLogs)
+                Debug.Log($"Blocking surface found: {hit.collider.name}", this);
+
+            break;
         }
+
+        if (drawDebugRay)
+        {
+            Color rayColor = foundSurface ? Color.red : Color.green;
+            Debug.DrawRay(bounds.center, direction * distance, rayColor, Time.fixedDeltaTime);
+        }
+
+        return foundSurface;
+    }
+
+    private bool IsPlayer(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            return true;
+
+        if (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag("Player"))
+            return true;
 
         return false;
     }
