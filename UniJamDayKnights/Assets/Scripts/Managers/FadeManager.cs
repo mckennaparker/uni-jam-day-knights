@@ -73,8 +73,10 @@ public class FadeManager : MonoBehaviour
     }
     public void FadeToFinalScene(int sceneIndex)
     {
-        if (isFading)
+       if (isFading)
+        {
             return;
+        }
 
         StartCoroutine(FinalSceneTransition(sceneIndex));
     }
@@ -148,7 +150,6 @@ public class FadeManager : MonoBehaviour
         AudioManager.Instance?.PlaylongJingle();
 
         yield return Fade(Color.white, 0f, 1f, finalFadeDuration);
-
         yield return new WaitForSeconds(finalWhiteHoldDuration);
 
         SceneManager.LoadScene(sceneIndex);

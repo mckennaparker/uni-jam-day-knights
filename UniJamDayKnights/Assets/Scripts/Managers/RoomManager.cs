@@ -56,16 +56,6 @@ public class RoomManager : MonoBehaviour
         isDarkRoom = dark;
         OnDarkRoomStateChanged?.Invoke(isDarkRoom);
     }
-    //public void RestartRoom()
-    //{
-    //    if (isRestarting)
-    //    {
-    //        return;
-    //    }
-
-    //    isRestarting = true;
-    //    Invoke(nameof(ReloadCurrentScene), restartDelay);
-    //}
     public void RestartRoom(float delayBeforeFade = 0f)
     {
         if (FadeManager.Instance != null)
