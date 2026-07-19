@@ -444,7 +444,8 @@ PrefabInstance:
       value: Glyph_Lever
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7380050201512705867, guid: 09a9886705ec7954ead6c39625cfa813, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a9886705ec7954ead6c39625cfa813, type: 3}
@@ -511,7 +512,8 @@ PrefabInstance:
       value: Glyph_4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3961509839546454103, guid: cde191202f1e68b48adc4c1cab75ab23, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cde191202f1e68b48adc4c1cab75ab23, type: 3}

@@ -438,7 +438,8 @@ PrefabInstance:
       value: Glyph_PressureButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8192137702932435243, guid: 0eba906432e83be48b1afd0231934148, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eba906432e83be48b1afd0231934148, type: 3}
