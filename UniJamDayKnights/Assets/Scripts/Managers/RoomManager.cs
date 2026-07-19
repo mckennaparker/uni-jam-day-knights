@@ -34,11 +34,6 @@ public class RoomManager : MonoBehaviour
         {
             RestartRoom();
         }
-
-        if (Input.GetKeyDown(KeyCode.T)) // press T to change bright/dark state (debug)
-        {
-            ToggleLightState();
-        }
     }
     public void ToggleLightState()
     {
