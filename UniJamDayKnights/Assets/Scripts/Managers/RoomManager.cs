@@ -17,6 +17,10 @@ public class RoomManager : MonoBehaviour
 
     private bool isRestarting;
 
+    private static Vector3 checkpointPosition;
+    private static string checkpointSceneName;
+    private static bool hasCheckpoint;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -69,9 +73,57 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    private void ReloadCurrentScene()
+    public void SetCheckpoint(Vector3 position)
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
+        checkpointPosition = position;
+        checkpointSceneName = SceneManager.GetActiveScene().name;
+        hasCheckpoint = true;
+
+        Debug.Log($"Checkpoint saved at {checkpointPosition}");
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!hasCheckpoint || scene.name != checkpointSceneName)
+            return;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
+        {
+            Debug.LogWarning("Player was not found after scene reload.");
+            return;
+        }
+
+        player.transform.position = checkpointPosition;
+
+        Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
+
+        if (playerRigidbody != null)
+            playerRigidbody.linearVelocity = Vector2.zero;
+
+        Camera mainCamera = Camera.main;
+
+        if (mainCamera != null)
+        {
+            Vector3 cameraPosition = mainCamera.transform.position;
+
+            cameraPosition.x = checkpointPosition.x;
+            cameraPosition.y = checkpointPosition.y;
+
+            mainCamera.transform.position = cameraPosition;
+        }
+
+        Debug.Log($"Player and camera respawned at {checkpointPosition}");
     }
 }
