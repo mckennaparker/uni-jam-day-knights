@@ -93,6 +93,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/LevelEnd.unity
     guid: 931fe8cf54d00c643b4037cfe25035e5
   - enabled: 1
+    path: Assets/Scenes/UI/YouWin.unity
+    guid: f5e889a9034efe546b04ab798869b279
+  - enabled: 1
     path: Assets/Scenes/UI/Credits.unity
     guid: 5c02a9f3cfb03524e97646a8ff436e8d
   - enabled: 1

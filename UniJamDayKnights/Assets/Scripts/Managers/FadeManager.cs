@@ -23,6 +23,8 @@ public class FadeManager : MonoBehaviour
     [SerializeField] private float finalWhiteHoldDuration = 1f;
 
     private bool isFading;
+    private bool restartQueued;
+    private float queuedRestartDelay;
 
     private void Awake()
     {
@@ -67,7 +69,11 @@ public class FadeManager : MonoBehaviour
     public void FadeRestartScene(float delayBeforeFade = 0f)
     {
         if (isFading)
+        {
+            restartQueued = true;
+            queuedRestartDelay = delayBeforeFade;
             return;
+        }
 
         StartCoroutine(RestartSceneTransition(delayBeforeFade));
     }
@@ -95,7 +101,7 @@ public class FadeManager : MonoBehaviour
 
         yield return Fade(Color.black, 1f, 0f, fadeInDuration);
 
-        isFading = false;
+        FinishTransition();
     }
 
     private IEnumerator NormalSceneTransition(string sceneName)
@@ -112,7 +118,7 @@ public class FadeManager : MonoBehaviour
 
         yield return Fade(Color.black, 1f, 0f, fadeInDuration);
 
-        isFading = false;
+        FinishTransition();
     }
 
     private IEnumerator RestartSceneTransition(float delayBeforeFade)
@@ -141,7 +147,7 @@ public class FadeManager : MonoBehaviour
             restartFadeInDuration
         );
 
-        isFading = false;
+        FinishTransition();
     }
     private IEnumerator FinalSceneTransition(int sceneIndex)
     {
@@ -161,13 +167,28 @@ public class FadeManager : MonoBehaviour
         isFading = false;
     }
 
+    private void FinishTransition()
+    {
+        isFading = false;
+
+        if (!restartQueued)
+            return;
+
+        float delay = queuedRestartDelay;
+
+        restartQueued = false;
+        queuedRestartDelay = 0f;
+
+        StartCoroutine(RestartSceneTransition(delay));
+    }
+
     private IEnumerator FadeInFromBlack()
     {
         isFading = true;
 
         yield return Fade(Color.black, 1f, 0f, fadeOutDuration);
 
-        isFading = false;
+        FinishTransition();
     }
 
     private IEnumerator Fade(
