@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
   mainMenuPanel: {fileID: 677762710}
+  firstLevelName: Level1
   audioMixer: {fileID: 24100000, guid: 8674441f092f59d4d9cd391962817d54, type: 2}
 --- !u!4 &223039596
 Transform:
@@ -1098,8 +1099,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -3666884473917519839, guid: d886b6faa795b2f47b064a61cc139987, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
