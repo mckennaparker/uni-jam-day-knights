@@ -94,10 +94,9 @@ public class TrophyGem : MonoBehaviour
 
             float t = Mathf.Clamp01(elapsed / collectDuration);
 
-            // 회전은 일정한 속도
+
             float rotationT = t;
 
-            // 마지막으로 갈수록 중심으로 빨려감
             float radiusT = t * t;
 
             targetPosition = player.position + targetOffset;
