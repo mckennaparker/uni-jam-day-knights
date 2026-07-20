@@ -27,7 +27,10 @@ public class PlayerDeath : MonoBehaviour
         DisablePlayerMovement();
 
         if (RoomManager.Instance != null)
+        {
+            DeathCounterManager.Instance.AddDeath();
             RoomManager.Instance.RestartRoom(deathRestartDelay);
+        }
         else
             Debug.LogError("RoomManager was not found in the scene.");
     }
