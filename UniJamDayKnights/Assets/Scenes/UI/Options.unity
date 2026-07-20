@@ -1919,10 +1919,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 609346631}
   m_HandleRect: {fileID: 1152540246}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: -40
+  m_MaxValue: 15
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3118,10 +3118,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1153760405}
   m_HandleRect: {fileID: 2098887515}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: -40
+  m_MaxValue: 15
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
