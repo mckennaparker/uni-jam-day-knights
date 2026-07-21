@@ -40,6 +40,7 @@ public class GateController : MonoBehaviour
         RoomManager.Instance.OnDarkRoomStateChanged += ApplyRoomState;
         ApplyRoomState(RoomManager.Instance.IsDarkRoom);
     }
+
     private void OnDisable()
     {
         if (RoomManager.Instance != null)
