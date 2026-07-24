@@ -32,6 +32,7 @@ public class MainMenuController : MonoBehaviour
         {
             SceneManager.LoadScene(firstLevelName);
         }
+        DeathCounterManager.Instance?.ResetCounter();
     }
 
     public void ViewOptions()
